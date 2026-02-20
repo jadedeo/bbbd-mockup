@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Black/African Descent",
+        "key": 1
+    },
+    {
+        "name": "Latine/Hispanic",
+        "key": 2
+    },
+    {
+        "name": "Indigenous Peoples of the Americas",
+        "key": 3
+    },
+    {
+        "name": "West Asian and North African",
+        "key": 4
+    },
+    {
+        "name": "South Asian",
+        "key": 5
+    },
+    {
+        "name": "Southeast Asian",
+        "key": 6
+    },
+    {
+        "name": "Indigenous Peoples of Oceania",
+        "key": 7
+    }
+]

@@ -1,0 +1,10 @@
+[
+    { "name": "Zapotec", "generalCategories": [3] },
+    { "name": "Quechua", "generalCategories": [3] },
+    { "name": "Hausa", "generalCategories": [1] },
+    { "name": "Afro-Caribbean", "generalCategories": [1, 2] },
+    { "name": "Afro-Latino", "generalCategories": [1, 2] },
+    { "name": "Colored (South African)", "generalCategories": [1, 5] },
+    { "name": "Romani", "generalCategories": [5] },
+    { "name": "Hazara", "generalCategories": [4, 5] }
+]
