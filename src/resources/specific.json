@@ -6,5 +6,6 @@
     { "name": "Afro-Latino", "generalCategories": [1, 2] },
     { "name": "Colored (South African)", "generalCategories": [1, 5] },
     { "name": "Romani", "generalCategories": [5] },
-    { "name": "Hazara", "generalCategories": [4, 5] }
+    { "name": "Hazara", "generalCategories": [4, 5] },
+    { "name": "Unlisted (Specific)", "generalCategories": [1, 2, 3, 4, 5] }
 ]
