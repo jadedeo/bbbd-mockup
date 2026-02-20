@@ -28,6 +28,9 @@
     h2 {
         @apply text-xl font-bold;
     }
+    h3 {
+        @apply font-bold;
+    }
 
     a {
         @apply underline;
@@ -35,5 +38,19 @@
 
     p.secondary {
         @apply text-gray-400;
+    }
+
+    .card {
+        @apply p-8 bg-white flex flex-col gap-8 border border-gray-300;
+    }
+
+    .Mui-disabled {
+        @apply cursor-not-allowed!;
+    }
+
+    /* get rid of stupid gap where shrinking label used to be */
+    .MuiSelect-select,
+    .MuiInputBase-input {
+        @apply pt-3!;
     }
 }
