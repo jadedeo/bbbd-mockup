@@ -98,7 +98,7 @@ function App() {
     }, [selectedGeneral, masterSpecific]);
 
     return (
-        <main className="w-dwh min-h-dvh flex ">
+        <main className="w-dwh min-h-dvh flex justify-center">
             <div className="max-w-5xl m-[5%] flex flex-col gap-8">
                 {/* HEADER CARD*/}
                 <div>
@@ -254,7 +254,7 @@ function App() {
                                 <p>
                                     This field is meant to capture the more
                                     detailed aspects of an individual's
-                                    identity. In some cases, this may be
+                                    identity. In some cases, this may be a
                                     country, state, or region of origin. In
                                     others, it may be a specific ethnicity or
                                     tribe.{" "}
