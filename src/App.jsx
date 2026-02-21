@@ -31,19 +31,13 @@ const MenuProps = {
     },
 };
 
-/*style={{
-    marginRight: 8,
-    padding: 9,
-    boxSizing:
-        "content-box",
-}} */
-
 function App() {
     const UNLISTED_GENERAL_KEY = 0;
     const UNLISTED_SPECIFIC_NAME = "Unlisted (Specific)";
 
     const generalByKey = new Map(GeneralIdentities.map((g) => [g.key, g]));
 
+    // const [masterGeneral, setMasterGeneral] = useState(GeneralIdentities);
     const [masterSpecific, setMasterSpecific] = useState(SpecificIdentities);
     const [displayedSpecific, setDisplayedSpecific] = useState([]);
     const [selectedGeneral, setSelectedGeneral] = useState([]);
@@ -65,12 +59,22 @@ function App() {
         setSelectedSpecific(event.target.value);
     };
 
+    // return alphabetized array of objects
+    const sortOptions = (list) => {
+        const sortedList = list.sort((a, b) => a.name.localeCompare(b.name));
+        return sortedList;
+    };
+
     // on mount, programmatically add "Unlisted/0" to the generalCategories array of each specific identity
     useEffect(() => {
         const specificWithUnlisted = masterSpecific.map((specific) => ({
             ...specific,
             generalCategories: [0, ...specific.generalCategories],
         }));
+
+        const sortedSpecific = sortOptions(specificWithUnlisted);
+        // console.log("sortedSpecific:", sortedSpecific);
+
         setMasterSpecific(specificWithUnlisted);
     }, []);
 
@@ -82,15 +86,23 @@ function App() {
             ),
         );
 
+        // add Unlisted (Specific) to end of displayed specific options
+        filteredSpecific.push({
+            name: UNLISTED_SPECIFIC_NAME,
+            generalCategories: [1, 2, 3, 4, 5],
+        });
+
+        // console.log("sortedSpecific FULL:", filteredSpecific);
+
         setDisplayedSpecific(filteredSpecific);
     }, [selectedGeneral, masterSpecific]);
 
     return (
-        <main className="w-dwh min-h-dvh flex justify-center items-center">
+        <main className="w-dwh min-h-dvh flex ">
             <div className="max-w-5xl m-[5%] flex flex-col gap-8">
                 {/* HEADER CARD*/}
                 <div>
-                    <div className="grid grid-cols-4 h-3">
+                    <div className="grid grid-cols-4 h-3 rounded-t-md overflow-hidden border-t border-x border-gray-300">
                         <div className=" bg-[#DFFD00]"></div>
 
                         <div className=" bg-[#28DDCD]"></div>
@@ -100,7 +112,7 @@ function App() {
                         <div className=" bg-[#FF008D]"></div>
                     </div>
 
-                    <div className="card gap-4!">
+                    <div className="card gap-4! rounded-t-none border-t-0">
                         <h1>Thanks for testing with us!</h1>
                         <p className="">
                             Please interact freely with the fields below to
@@ -120,14 +132,14 @@ function App() {
                             <div className="flex flex-col gap-2">
                                 <h2>
                                     <label htmlFor="general">
-                                        General Identity
+                                        General Identity*
                                     </label>
                                 </h2>
                                 <p>
-                                    This field is meant to capture blah blah
-                                    blah.{" "}
+                                    This field is meant to capture the broadest
+                                    racial and/or ethnic groupings.{" "}
                                     <Tooltip
-                                        title="Would you like to be provided the option to learn more about our field values here?"
+                                        title="Would you like to be provided the option to learn more about our choice of field values here?"
                                         placement="right"
                                     >
                                         <InfoOutlineIcon
@@ -211,7 +223,7 @@ function App() {
                                 {isGenUnlistedSelected && (
                                     <div className="flex flex-col gap-4">
                                         <h3 htmlFor="general-unlisted-elaborate">
-                                            Please elaborate.
+                                            Please elaborate*
                                         </h3>
                                         <TextField
                                             required
@@ -240,15 +252,14 @@ function App() {
                                     </label>
                                 </h2>
                                 <p>
-                                    This field is meant to capture blah blah
-                                    blah. It will only display identities that
-                                    fall under one or more of the general
-                                    identities selected in the previous
-                                    question. If "Unlisted" has been selected
-                                    for the field above, a full list of Specific
-                                    identities will be shown.{" "}
+                                    This field is meant to capture the more
+                                    detailed aspects of an individual's
+                                    identity. In some cases, this may be
+                                    country, state, or region of origin. In
+                                    others, it may be a specific ethnicity or
+                                    tribe.{" "}
                                     <Tooltip
-                                        title="Would you like to be provided the option to learn more about our field values here?"
+                                        title="Would you like to be provided the option to learn more about our choice of field values here?"
                                         placement="right"
                                     >
                                         <InfoOutlineIcon
@@ -358,7 +369,7 @@ function App() {
                                 {isSpecUnlistedSelected && (
                                     <div className="flex flex-col gap-4">
                                         <h3 htmlFor="specific-unlisted-elaborate">
-                                            Please elaborate.
+                                            Please elaborate*
                                         </h3>
                                         <TextField
                                             required

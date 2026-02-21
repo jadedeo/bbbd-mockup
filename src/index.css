@@ -41,7 +41,7 @@
     }
 
     .card {
-        @apply p-8 bg-white flex flex-col gap-8 border border-gray-300;
+        @apply p-8 bg-white flex flex-col gap-8 border border-gray-300 rounded-md;
     }
 
     .Mui-disabled {
